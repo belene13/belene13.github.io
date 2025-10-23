@@ -1,0 +1,58 @@
+{
+    border: 1px solid black;
+    padding: 2px;
+    margin: 0;
+}
+
+html{
+    background-color: #242834;
+}   
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 2rem;
+    min-height: 80vh;
+    
+}
+
+.titulo h1{
+    color: #B6FF00;
+    font-family: "BBH Sans Bartle", sans-serif;
+    font-size: 45px;
+    margin-top: 20px;
+}
+
+.titulo p{
+    text-align: center;
+    font-size: 20px;
+    font-family: roboto, sans-serif;
+    color: white;
+}
+
+li a{
+    text-decoration: none;
+    font-family: roboto, sans-serif;
+    background-color: #B6FF00;
+    display: inline-block;
+    margin-block: 1rem ;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 5px;
+    border: solid 5px #242834;
+    transition: all 0.3s ease-in-out;
+}
+
+li a:hover{
+    background-color: #242834;
+    border: solid 1px #B6FF00;
+    transform: scale(1.1);
+    color: #B6FF00;
+}
+
+ul{
+list-style-type: none;
+}
+
