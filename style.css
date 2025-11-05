@@ -1,5 +1,5 @@
-{
-    border: 1px solid black;
+*{
+    
     padding: 2px;
     margin: 0;
 }
@@ -36,7 +36,10 @@ li a{
     text-decoration: none;
     font-family: roboto, sans-serif;
     background-color: #B6FF00;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 40px;
     margin-block: 1rem ;
     padding-inline: 1rem;
     padding-block: 0.5rem;
@@ -50,6 +53,7 @@ li a:hover{
     border: solid 1px #B6FF00;
     transform: scale(1.1);
     color: #B6FF00;
+    
 }
 
 ul{
