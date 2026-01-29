@@ -7,8 +7,9 @@ function setup() {
   c.position(0, 0);
   c.style('z-index', '-1');
   noStroke();
-
-
+  colorMode(HSB, 360, 100, 100, 100);
+noCursor();
+ 
   for (let i = 0; i < 200; i++) {
     stars.push({
       x: random(width),
@@ -26,7 +27,8 @@ function windowResized() {
 function draw() {
   background(0);
   drawStars();
-  drawBlob(mouseX, mouseY);
+  drawStarCursor(mouseX, mouseY);
+
   t += 0.01;
 }
 
@@ -42,38 +44,43 @@ function drawStars() {
   }
 }
 
-function drawBlob(x, y) {
+function drawStarCursor(x, y) {
   push();
   translate(x, y);
+  rotate(t * 1.5);
+  noStroke();
 
-  let layers = [
-    color(120, 200, 255, 80),
-    color(180, 120, 255, 70),
-    color(255, 120, 200, 60),
-    color(120, 255, 200, 60)
-  ];
+  let points = 8;
+  let innerR = 14;
+  let outerR = 38;
 
-  for (let i = 0; i < layers.length; i++) {
-    fill(layers[i]);
+
+  let hueValue = (frameCount * 1.5) % 360;
+
+  for (let i = 3; i >= 1; i--) {
+    let glowOuter = outerR + i * 12;
+    let glowInner = innerR + i * 6;
+
+    fill(hueValue, 70, 90, 20); 
+
     beginShape();
-
-    let points = 12;
-    let radius = 20 + i * 6; // 
-
-    for (let a = 0; a < TWO_PI; a += TWO_PI / points) {
-      let noiseVal = noise(
-        cos(a) + 1 + i * 10,
-        sin(a) + 1 + t
-      );
-
-      let r = radius + noiseVal * 10; // 
-      let px = cos(a) * r;
-      let py = sin(a) * r;
-      curveVertex(px, py);
+    for (let j = 0; j < points * 2; j++) {
+      let angle = PI * j / points;
+      let r = j % 2 === 0 ? glowOuter : glowInner;
+      vertex(cos(angle) * r, sin(angle) * r);
     }
-
     endShape(CLOSE);
   }
+
+  fill(hueValue, 80, 100, 90);
+
+  beginShape();
+  for (let i = 0; i < points * 2; i++) {
+    let angle = PI * i / points;
+    let r = i % 2 === 0 ? outerR : innerR;
+    vertex(cos(angle) * r, sin(angle) * r);
+  }
+  endShape(CLOSE);
 
   pop();
 }
