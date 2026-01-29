@@ -2,6 +2,7 @@
     
     padding: 2px;
     margin: 0;
+    cursor: none;
 }
 
 html{
@@ -58,16 +59,4 @@ li a:hover{
 
 ul{
 list-style-type: none;
-}
-
-
-
-#cursor-follower {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 60px;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999; /* MUY IMPORTANTE */
 }
