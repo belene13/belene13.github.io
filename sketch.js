@@ -8,7 +8,7 @@ function setup() {
   c.style('z-index', '-1');
   noStroke();
 
-  // estrellas
+
   for (let i = 0; i < 200; i++) {
     stars.push({
       x: random(width),
@@ -30,7 +30,6 @@ function draw() {
   t += 0.01;
 }
 
-// 🌟 estrellas que titilan
 function drawStars() {
   for (let s of stars) {
     let alpha = map(
@@ -43,7 +42,6 @@ function drawStars() {
   }
 }
 
-// 🫧 mancha orgánica (50% más pequeña)
 function drawBlob(x, y) {
   push();
   translate(x, y);
@@ -60,7 +58,7 @@ function drawBlob(x, y) {
     beginShape();
 
     let points = 12;
-    let radius = 20 + i * 6; // 🔽 antes ~70
+    let radius = 20 + i * 6; // 
 
     for (let a = 0; a < TWO_PI; a += TWO_PI / points) {
       let noiseVal = noise(
@@ -68,7 +66,7 @@ function drawBlob(x, y) {
         sin(a) + 1 + t
       );
 
-      let r = radius + noiseVal * 10; // 🔽 antes ~40
+      let r = radius + noiseVal * 10; // 
       let px = cos(a) * r;
       let py = sin(a) * r;
       curveVertex(px, py);
